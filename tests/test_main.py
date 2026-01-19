@@ -3,6 +3,7 @@ import os
 import sys
 import tempfile
 
+# Добавляем src в путь, чтобы импортировать main
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
 from main import Category, Product, load_data
@@ -33,7 +34,7 @@ def test_category_products_property() -> None:
 
 
 def test_category_counters() -> None:
-    # Обнуляем счётчики
+    # Обнуляем счётчики перед тестом (важно для изоляции)
     Category.category_count = 0
     Category.product_count = 0
 
@@ -49,7 +50,6 @@ def test_category_counters() -> None:
 
 
 def test_load_data() -> None:
-    # Подготовим временный JSON-файл
     test_data = [
         {
             "name": "Смартфоны",
