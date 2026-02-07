@@ -47,3 +47,14 @@ def test_category_counters():
 
     assert Category.category_count == 1
     assert Category.product_count == 2
+
+
+# === НОВЫЙ ТЕСТ ДЛЯ 15.1 ===
+
+
+def test_category_str():
+    """Проверка строкового представления категории (сумма quantity)."""
+    p1 = Product("Телефон A", "Описание", 10000.0, 3)
+    p2 = Product("Телефон B", "Описание", 20000.0, 7)
+    category = Category("Смартфоны", "Все смартфоны", [p1, p2])
+    assert str(category) == "Смартфоны, количество продуктов: 10 шт."

@@ -35,12 +35,15 @@ class Category:
 
     @property
     def products(self) -> str:
-        return "\n".join(
-            f"{p.name}, {p.price} руб. Остаток: {p.quantity} шт."
-            for p in self.__products
-        )
+        """Возвращает строковое представление всех товаров категории."""
+        return "\n".join(str(product) for product in self.__products)
 
     @property
     def products_list(self) -> List[Product]:
         """Возвращает список товаров (для тестов и внутреннего использования)."""
         return self.__products
+
+    def __str__(self) -> str:
+        """Возвращает строковое представление категории."""
+        total_quantity = sum(product.quantity for product in self.__products)
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
