@@ -12,9 +12,9 @@ python = "^3.12"
 black = "^24.0"
 isort = "^5.13"
 flake8 = "^7.0"
-pytest = "^8.0"
 mypy = "^1.10"
 pytest-cov = "^5.0"
+pytest = "^9.0.2"
 
 [build-system]
 requires = ["poetry-core"]
@@ -43,7 +43,6 @@ exclude = '''
 [tool.isort]
 profile = "black"
 line_length = 88
-known_first_party = ["my_project"]
 src_paths = ["src"]
 
 # ================
@@ -65,19 +64,15 @@ exclude = [
 # mypy
 # ================
 [tool.mypy]
-files = ["src"]
 python_version = "3.12"
 disallow_untyped_defs = true
 warn_return_any = true
 warn_unused_configs = true
-exclude = ["venv", ".venv"]
 
 # ================
 # pytest
 # ================
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
+pythonpath = ["src"]
 addopts = "-v --strict-markers"
